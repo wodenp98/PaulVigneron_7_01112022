@@ -1,0 +1,19 @@
+{
+  "name": "paulvigneron_7_01112022",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./sass/style.scss:./sass/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wodenp98/PaulVigneron_7_01112022.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wodenp98/PaulVigneron_7_01112022/issues"
+  },
+  "homepage": "https://github.com/wodenp98/PaulVigneron_7_01112022#readme"
+}

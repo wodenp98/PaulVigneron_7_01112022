@@ -1,0 +1,119 @@
+html {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+body {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.header {
+  text-align: center;
+  margin-top: 40px;
+  font-family: "DM sans";
+}
+.header .header-title {
+  color: #d04f4f;
+  margin-top: 0;
+}
+
+.search {
+  margin: auto;
+}
+.search .search-bar {
+  position: relative;
+  background-color: #e7e7e7;
+  height: 69px;
+  width: 90%;
+  border-radius: 5px;
+  margin: auto;
+}
+.search .search-bar i {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  font-size: 32px;
+}
+.search-input {
+  padding: 0px 15px 0px 15px;
+  border-radius: 5px;
+  background-color: inherit;
+  width: 90%;
+  border: none;
+  height: 100%;
+  font-size: 18px;
+}
+
+.search-error {
+  font-size: 1.1rem;
+  color: red;
+  margin: 20px auto;
+  width: 90%;
+}
+
+.dropdown {
+  display: flex;
+  margin: auto;
+  width: 90%;
+  margin-top: 20px;
+}
+@media screen and (max-width: 550px) {
+  .dropdown {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.ingredients, .appliances, .ustensils {
+  margin-right: 10px;
+}
+@media screen and (max-width: 550px) {
+  .ingredients, .appliances, .ustensils {
+    margin-top: 10px;
+  }
+}
+.ingredients-dropdown, .appliances-dropdown, .ustensils-dropdown {
+  display: flex;
+  align-items: center;
+  padding: 0px 15px 0px 15px;
+  font-size: 18px;
+  min-height: 69px;
+  height: fit-content;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  background-color: #3282f7;
+}
+.ingredients-dropdown input, .appliances-dropdown input, .ustensils-dropdown input {
+  width: 90%;
+  font-weight: bold;
+  font-size: 18px;
+  background-color: transparent;
+  color: white;
+  border: none;
+}
+.ingredients-dropdown input:focus, .appliances-dropdown input:focus, .ustensils-dropdown input:focus {
+  outline: none;
+}
+.ingredients-dropdown input::placeholder, .appliances-dropdown input::placeholder, .ustensils-dropdown input::placeholder {
+  color: white;
+}
+.ingredients-dropdown i, .appliances-dropdown i, .ustensils-dropdown i {
+  height: fit-content;
+}
+
+.red {
+  background-color: #ED6454;
+}
+
+.green {
+  background-color: #68D9A4;
+}
+
+/*# sourceMappingURL=style.css.map */

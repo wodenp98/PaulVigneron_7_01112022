@@ -1,0 +1,35 @@
+.search {
+    margin: auto;
+
+    .search-bar {
+      position: relative;
+      background-color: #e7e7e7;
+      height: 69px;
+      width: 90%;
+      border-radius: 5px;
+      margin: auto;
+      i {
+        position: absolute;
+        top: 20px;
+        right: 10px;
+        font-size: 32px;
+      }
+    }
+    &-input {
+        padding: 0px 15px 0px 15px;
+        border-radius: 5px;
+        background-color: inherit;
+        width: 90%;
+        border: none;
+        height: 100%;
+        font-size: 18px;
+      }
+}
+
+.search-error {
+    font-size: 1.1rem;
+    color: red;
+    margin: 20px auto;
+    width: 90%;
+    // display: none;
+}

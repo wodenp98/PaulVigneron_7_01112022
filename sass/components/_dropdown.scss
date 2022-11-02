@@ -1,0 +1,60 @@
+.dropdown {
+    display: flex;
+    margin: auto;
+    width: 90%;
+    margin-top: 20px;
+    @media screen and (max-width: 550px) {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.ingredients, .appliances, .ustensils {
+    margin-right: 10px;
+
+    @media screen and (max-width:550px) {
+        margin-top: 10px;
+    }
+
+    &-dropdown {
+        display: flex;
+        align-items: center;
+        padding: 0px 15px 0px 15px;
+        font-size: 18px;
+        min-height: 69px;
+        height: fit-content;
+        border-radius: 5px;
+        border: none;
+        color: white;
+        background-color: #3282f7;
+        & input {
+            width: 90%;
+            font-weight: bold;
+            font-size: 18px;
+            background-color: transparent;
+            color: white;
+            border: none;
+
+            &:focus {
+                outline: none;
+            }
+
+            &::placeholder {
+                color: white;
+            }
+
+        }
+
+        i {
+            height: fit-content;
+        }
+    }
+}
+
+.red {
+    background-color: #ED6454;
+}
+
+.green {
+    background-color: #68D9A4;
+}
