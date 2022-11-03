@@ -5,105 +5,156 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" type="image/png" href="/assets/LogoPetitsPlats.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/sass/style.css">
     <script src="https://kit.fontawesome.com/a31756020a.js" crossorigin="anonymous"></script>
     <title>Les petits plats</title>
 </head>
 <body>
-    <main>
         <header class="header">
             <img src="/assets/LogoPetitsPlats.png" alt="Logo les petits plats">
             <h1 class="header-title">Les petits plats</h1>
         </header>
-        <section class="search">
-            <div class="search-bar">
-                <input autocomplete="off" placeholder="Rechercher une recette" type="text" id="search-input" class="search-input" name="search-input">
-                <label for="search-input">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </label>
-            </div>
-            <p class="search-error"> Aucune recette ne correspond à votre critère… vous pouvez
-                chercher « tarte aux pommes », « poisson», etc.</p>
-            <div class="tags">
-                <div class="tags-section"></div>
-            </div>
-            <div class="dropdown">
+        <main>
+            <section class="search">
+                <div class="search-bar">
+                    <input autocomplete="off" placeholder="Rechercher une recette" type="text" id="search-input" class="search-input" name="search-input">
+                    <label for="search-input">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </label>
+                </div>
+                <p class="search-error"> Aucune recette ne correspond à votre critère… vous pouvez
+                    chercher « tarte aux pommes », « poisson», etc.</p>
+            </section>
+            <section class="tags">
+                <div class="tags-container"></div>
+            </section>
+            <section class="dropdown">
                 <div class="ingredients">
-                    <div class="ingredients-dropdown">
+                    <div class="ingredients-container">
                         <input type="text" placeholder="Ingredients"/>
                         <i class="fa-solid fa-chevron-down"></i>
                     </div>
                 </div>
                 <div class="appliances">
-                    <div class="appliances-dropdown green">
+                    <div class="appliances-container green">
                         <input type="text" placeholder="Appareils"/>
                         <i class="fa-solid fa-chevron-down"></i>
                     </div>
                 </div>
                 <div class="ustensils">
-                    <div class="ustensils-dropdown red">
+                    <div class="ustensils-container red">
                         <input type="text" placeholder="Ustensiles"/>
                         <i class="fa-solid fa-chevron-down"></i>
                     </div>
                 </div>
-            </div>
-        </section>
-        <section class="section-recipes">
-            <article class="cards">
-                    <div class="cards-bg"></div>
-                    <div class="cards-description">
-                        <div class="cards-name">
-                            <h2 class="cards-title">Limonade de Coco</h2>
-                            <div class="cards-time">
-                                <i class="fa-regular fa-clock"></i>
-                                <p class="cooking-time">10min</p>
+            </section>
+            <section class="recipes">
+                <article class="cards">
+                        <div class="cards-bg"></div>
+                        <div class="cards-container">
+                            <div class="cards-title">
+                                <h2 class="cards-dishes">Limonade de Coco</h2>
+                                <div class="cards-duration">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p class="cards-time">10min</p>
+                                </div>
+                            </div>
+                            <div class="cards-description">
+                                <ul class="cards-list">
+                                        <li>
+                                            <span class="list-span">Lait de Coco:</span> " 400ml "
+                                        </li>
+                                        <li>
+                                            <span class="list-span">Jus de citron:</span> " 2 "
+                                        </li>
+                                        <li>
+                                            <span class="list-span">Crème de coco:</span> " 2 cuillères à soupe "
+                                        </li>
+                                </ul>
+                                <div class="cards-details">Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée</div>
                             </div>
                         </div>
-                        <div class="recipes">
-                            <ul class="recipes-list">
+                </article>
+                <article class="cards">
+                    <div class="cards-bg"></div>
+                    <div class="cards-container">
+                        <div class="cards-title">
+                            <h2 class="cards-dishes">Limonade de Coco</h2>
+                            <div class="cards-duration">
+                                <i class="fa-regular fa-clock"></i>
+                                <p class="cards-time">10min</p>
+                            </div>
+                        </div>
+                        <div class="cards-description">
+                            <ul class="cards-list">
                                     <li>
-                                        <span class="recipes-span">Lait de Coco:</span> " 400ml "
+                                        <span class="list-span">Lait de Coco:</span> " 400ml "
                                     </li>
                                     <li>
-                                        <span class="recipes-span">Jus de citron:</span> " 2 "
+                                        <span class="list-span">Jus de citron:</span> " 2 "
                                     </li>
                                     <li>
-                                        <span class="recipes-span">Crème de coco:</span> " 2 cuillères à soupe "
+                                        <span class="list-span">Crème de coco:</span> " 2 cuillères à soupe "
                                     </li>
                             </ul>
-                            <div class="recipes-method">Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée</div>
+                            <div class="cards-details">Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée</div>
                         </div>
                     </div>
-            </article>
+                </article>
+                <article class="cards">
                 <div class="cards-bg"></div>
-                <div class="cards-name">
-                    <h2 class="cards-title">Limonade de Coco</h2>
-                    <div class="cards-time">
-                        <i class="fa-regular fa-clock"></i>
-                        <p class="cooking-time">10min</p>
+                <div class="cards-container">
+                    <div class="cards-title">
+                        <h2 class="cards-dishes">Limonade de Coco</h2>
+                        <div class="cards-duration">
+                            <i class="fa-regular fa-clock"></i>
+                            <p class="cards-time">10min</p>
+                        </div>
                     </div>
-                </div>
-                <div class="recipes">
-                    <div class="recipes-ingredients">
-                        <ul class="recipes-list">
-                            <li>
-                                <span class="recipes-span">Lait de Coco:</span> " 400ml "
-                            </li>
-                            <li>
-                                <span class="recipes-span">Jus de citron:</span> " 2 "
-                            </li>
-                            <li>
-                                <span class="recipes-span">Crème de coco:</span> " 2 cuillères à soupe "
-                            </li>
+                    <div class="cards-description">
+                        <ul class="cards-list">
+                                <li>
+                                    <span class="list-span">Lait de Coco:</span> " 400ml "
+                                </li>
+                                <li>
+                                    <span class="list-span">Jus de citron:</span> " 2 "
+                                </li>
+                                <li>
+                                    <span class="list-span">Crème de coco:</span> " 2 cuillères à soupe "
+                                </li>
                         </ul>
-                    </div>
-                    <div class="recipes-method">
-                        <p class="advice">Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée</p>
+                        <div class="cards-details">Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée</div>
                     </div>
                 </div>
-        </article>
-        </section>
+                </article>
+                <article class="cards">
+                    <div class="cards-bg"></div>
+                    <div class="cards-container">
+                        <div class="cards-title">
+                            <h2 class="cards-dishes">Limonade de Coco</h2>
+                            <div class="cards-duration">
+                                <i class="fa-regular fa-clock"></i>
+                                <p class="cards-time">10min</p>
+                            </div>
+                        </div>
+                        <div class="cards-description">
+                            <ul class="cards-list">
+                                    <li>
+                                        <span class="list-span">Lait de Coco:</span> " 400ml "
+                                    </li>
+                                    <li>
+                                        <span class="list-span">Jus de citron:</span> " 2 "
+                                    </li>
+                                    <li>
+                                        <span class="list-span">Crème de coco:</span> " 2 cuillères à soupe "
+                                    </li>
+                            </ul>
+                            <div class="cards-details">Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée</div>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </main>
     <script src="/scripts/index.js"></script>
 </body>
 </html>

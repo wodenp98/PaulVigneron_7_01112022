@@ -1,7 +1,7 @@
 .dropdown {
     display: flex;
     margin: auto;
-    width: 90%;
+    width: 95%;
     margin-top: 20px;
     @media screen and (max-width: 550px) {
         display: flex;
@@ -16,7 +16,7 @@
         margin-top: 10px;
     }
 
-    &-dropdown {
+    &-container {
         display: flex;
         align-items: center;
         padding: 0px 15px 0px 15px;

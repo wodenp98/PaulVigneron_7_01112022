@@ -1,0 +1,96 @@
+.recipes {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    width: 95%;
+    margin: 30px auto;
+
+    @media screen and (max-width:1225px) {
+        display: grid;
+        grid-template-columns: 1fr auto;
+    }
+
+    @media screen and (max-width: 840px) {
+        display: grid;
+        grid-template-columns: auto;
+        margin-top: 20px;
+        margin-left: 10px;
+        width: 90%;
+    }
+  }
+
+  .cards {
+    width: 380px;
+    height: 364px;
+    margin-bottom: 60px;
+    @media screen and (max-width: 410px) {
+        width: 345px;
+    }
+
+    &-bg {
+        background-color: #c7bebe;
+        height: 178px;
+        border-radius: 5px 5px 0 0;
+    }
+
+    &-container {
+        background-color: #e7e7e7;
+        border-radius: 0 0 5px 5px;
+        padding: 18px;
+        height: 180px;
+    }
+
+    &-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &-dishes {
+        margin: 0;
+        font-family: "Lato";
+        font-size: 18px;
+        font-weight: 400;
+        max-width: 245px;
+    }
+
+    &-duration {
+        display: flex;
+        align-items: center;
+    }
+
+    &-time {
+        font-family: "Lato";
+        font-weight: 700;
+        font-size: 18px;
+        margin-left: 8px;
+    }
+
+    &-description {
+        display: flex;
+        font-size: 12px;
+        padding: 20px 0;
+    }
+
+    &-list {
+        width: 171px;
+        font-family: "Lato";
+    }
+
+    &-details {
+        max-height: 122px;
+        width: 171px;
+        font-family: "Roboto";
+        font-weight: 400;
+        overflow: hidden;
+    }
+  }
+
+.list-span {
+    font-weight: bold;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}

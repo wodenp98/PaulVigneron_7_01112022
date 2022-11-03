@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Roboto&display=swap");
 html {
   box-sizing: border-box;
   width: 100%;
@@ -9,7 +10,7 @@ html {
 }
 
 body {
-  max-width: 1200px;
+  max-width: 1350px;
   margin: auto;
 }
 
@@ -30,7 +31,7 @@ body {
   position: relative;
   background-color: #e7e7e7;
   height: 69px;
-  width: 90%;
+  width: 95%;
   border-radius: 5px;
   margin: auto;
 }
@@ -54,13 +55,13 @@ body {
   font-size: 1.1rem;
   color: red;
   margin: 20px auto;
-  width: 90%;
+  width: 95%;
 }
 
 .dropdown {
   display: flex;
   margin: auto;
-  width: 90%;
+  width: 95%;
   margin-top: 20px;
 }
 @media screen and (max-width: 550px) {
@@ -78,7 +79,7 @@ body {
     margin-top: 10px;
   }
 }
-.ingredients-dropdown, .appliances-dropdown, .ustensils-dropdown {
+.ingredients-container, .appliances-container, .ustensils-container {
   display: flex;
   align-items: center;
   padding: 0px 15px 0px 15px;
@@ -90,7 +91,7 @@ body {
   color: white;
   background-color: #3282f7;
 }
-.ingredients-dropdown input, .appliances-dropdown input, .ustensils-dropdown input {
+.ingredients-container input, .appliances-container input, .ustensils-container input {
   width: 90%;
   font-weight: bold;
   font-size: 18px;
@@ -98,13 +99,13 @@ body {
   color: white;
   border: none;
 }
-.ingredients-dropdown input:focus, .appliances-dropdown input:focus, .ustensils-dropdown input:focus {
+.ingredients-container input:focus, .appliances-container input:focus, .ustensils-container input:focus {
   outline: none;
 }
-.ingredients-dropdown input::placeholder, .appliances-dropdown input::placeholder, .ustensils-dropdown input::placeholder {
+.ingredients-container input::placeholder, .appliances-container input::placeholder, .ustensils-container input::placeholder {
   color: white;
 }
-.ingredients-dropdown i, .appliances-dropdown i, .ustensils-dropdown i {
+.ingredients-container i, .appliances-container i, .ustensils-container i {
   height: fit-content;
 }
 
@@ -114,6 +115,98 @@ body {
 
 .green {
   background-color: #68D9A4;
+}
+
+.recipes {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  width: 95%;
+  margin: 30px auto;
+}
+@media screen and (max-width: 1225px) {
+  .recipes {
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+}
+@media screen and (max-width: 840px) {
+  .recipes {
+    display: grid;
+    grid-template-columns: auto;
+    margin-top: 20px;
+    margin-left: 10px;
+    width: 90%;
+  }
+}
+
+.cards {
+  width: 380px;
+  height: 364px;
+  margin-bottom: 60px;
+}
+@media screen and (max-width: 410px) {
+  .cards {
+    width: 345px;
+  }
+}
+.cards-bg {
+  background-color: #c7bebe;
+  height: 178px;
+  border-radius: 5px 5px 0 0;
+}
+.cards-container {
+  background-color: #e7e7e7;
+  border-radius: 0 0 5px 5px;
+  padding: 18px;
+  height: 180px;
+}
+.cards-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cards-dishes {
+  margin: 0;
+  font-family: "Lato";
+  font-size: 18px;
+  font-weight: 400;
+  max-width: 245px;
+}
+.cards-duration {
+  display: flex;
+  align-items: center;
+}
+.cards-time {
+  font-family: "Lato";
+  font-weight: 700;
+  font-size: 18px;
+  margin-left: 8px;
+}
+.cards-description {
+  display: flex;
+  font-size: 12px;
+  padding: 20px 0;
+}
+.cards-list {
+  width: 171px;
+  font-family: "Lato";
+}
+.cards-details {
+  max-height: 122px;
+  width: 171px;
+  font-family: "Roboto";
+  font-weight: 400;
+  overflow: hidden;
+}
+
+.list-span {
+  font-weight: bold;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 /*# sourceMappingURL=style.css.map */
