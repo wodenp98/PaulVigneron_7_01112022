@@ -77,11 +77,14 @@
     }
 
     &-details {
-        max-height: 122px;
+        display: -webkit-box;
+        max-height: 100px;
         width: 171px;
         font-family: "Roboto";
         font-weight: 400;
         overflow: hidden;
+        -webkit-line-clamp: 7;
+        -webkit-box-orient: vertical;
     }
   }
 

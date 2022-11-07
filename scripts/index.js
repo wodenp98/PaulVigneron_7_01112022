@@ -2,10 +2,27 @@ async function getRecipes() {
   try {
     const response = await fetch("/data/recipes.json");
     const data = await response.json();
-
-    console.log(data);
+    return { recipes: data.recipes };
   } catch (error) {
     console.log(error);
   }
 }
-getRecipes();
+
+async function displayRecipes(recipes) {
+  const recipesSection = document.querySelector(".recipes");
+  recipesSection.innerHTML = "";
+
+  recipes.forEach((recipe) => {
+    const recipeModel = recipeFactory(recipe);
+    const recipeCardDOM = recipeModel.getRecipeCardDOM();
+    recipesSection.appendChild(recipeCardDOM);
+  });
+}
+
+async function init() {
+  const { recipes } = await getRecipes();
+  console.log(recipes);
+  displayRecipes(recipes);
+}
+
+init();
