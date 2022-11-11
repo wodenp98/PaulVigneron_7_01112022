@@ -56,6 +56,7 @@ body {
   color: red;
   margin: 20px auto;
   width: 95%;
+  display: none;
 }
 
 .dropdown {
@@ -78,6 +79,16 @@ body {
   .ingredients, .appliances, .ustensils {
     margin-top: 10px;
   }
+}
+.ingredients-tags, .appliances-tags, .ustensils-tags {
+  display: none;
+  background-color: #3282f7;
+  cursor: pointer;
+  color: white;
+  display: none;
+  margin-top: -5px;
+  padding-top: 10px;
+  border-radius: 0 0 5px 5px;
 }
 .ingredients-container, .appliances-container, .ustensils-container {
   display: flex;
@@ -118,12 +129,33 @@ body {
   height: -moz-fit-content;
   height: fit-content;
 }
+.ingredients-li, .appliances-li, .ustensils-li {
+  margin-top: 10px;
+}
+
+#ingredients-list, #appliances-list, #ustensils-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  max-height: 500px;
+  padding: 10px;
+  overflow: auto;
+  font-family: "Lato", sans-serif;
+  font-size: 18px;
+}
 
 .red {
   background-color: #ED6454;
 }
 
 .green {
+  background-color: #68D9A4;
+}
+
+.red-tag {
+  background-color: #ED6454;
+}
+
+.green-tag {
   background-color: #68D9A4;
 }
 

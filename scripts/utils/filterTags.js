@@ -1,19 +1,18 @@
-function ingredientsFilter(recipes) {
-  const ingredientsMap = recipes.map((recipe) => recipe.ingredients);
-  let array = [];
+// function ingredientsFilter(recipes) {
+//   const ingredientsMap = recipes.map((recipe) => recipe.ingredients);
+//   let array = [];
 
-  ingredientsMap.forEach((item) => {
-    item.forEach((recipe) => {
-      const arrayLower = recipe.ingredient.toLowerCase();
-      array.push(arrayLower);
-    });
-  });
-  const arrayUnduplicated = array.filter(
-    (item, index) => array.indexOf(item) === index
-  );
-
-  return arrayUnduplicated;
-}
+//   ingredientsMap.forEach((item) => {
+//     item.forEach((recipe) => {
+//       const arrayLower = recipe.ingredient.toLowerCase();
+//       array.push(arrayLower);
+//     });
+//   });
+//   const arrayUnduplicated = array.filter(
+//     (item, index) => array.indexOf(item) === index
+//   );
+//   return arrayUnduplicated;
+// }
 
 function appliancesFilter(recipes) {
   const appliancesMap = recipes.map((recipe) => recipe.appliance);
@@ -35,6 +34,23 @@ function ustensilsFilter(recipes) {
       array.push(arrayLower);
     });
   });
+  const arrayUnduplicated = array.filter(
+    (item, index) => array.indexOf(item) === index
+  );
+
+  return arrayUnduplicated;
+}
+
+function ingredientsFilter(recipes) {
+  const ingredientsMap = recipes.map((recipe) => recipe.ingredients);
+  let array = [];
+
+  ingredientsMap.forEach((ingredient) =>
+    ingredient.map((item) => {
+      const arrayLower = item.ingredient.toLowerCase();
+      array.push(arrayLower);
+    })
+  );
   const arrayUnduplicated = array.filter(
     (item, index) => array.indexOf(item) === index
   );
