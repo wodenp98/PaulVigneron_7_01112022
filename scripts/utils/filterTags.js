@@ -1,27 +1,19 @@
-// function ingredientsFilter(recipes) {
-//   const ingredientsMap = recipes.map((recipe) => recipe.ingredients);
-//   let array = [];
+function ingredientsFilter(recipes) {
+  const ingredientsMap = recipes.map((recipe) => recipe.ingredients);
+  let array = [];
 
-//   ingredientsMap.forEach((item) => {
-//     item.forEach((recipe) => {
-//       const arrayLower = recipe.ingredient.toLowerCase();
-//       array.push(arrayLower);
-//     });
-//   });
-//   const arrayUnduplicated = array.filter(
-//     (item, index) => array.indexOf(item) === index
-//   );
-//   return arrayUnduplicated;
-// }
+  ingredientsMap.forEach((item) => {
+    item.forEach((recipe) => {
+      array.push(recipe.ingredient.toLowerCase());
+    });
+  });
+  return [...new Set(array)];
+}
 
 function appliancesFilter(recipes) {
   const appliancesMap = recipes.map((recipe) => recipe.appliance);
 
-  const arrayUnduplicated = appliancesMap.filter(
-    (item, index) => appliancesMap.indexOf(item) === index
-  );
-
-  return arrayUnduplicated;
+  return [...new Set(appliancesMap)];
 }
 
 function ustensilsFilter(recipes) {
@@ -30,32 +22,11 @@ function ustensilsFilter(recipes) {
 
   ustensilsMap.forEach((item) => {
     item.forEach((ustensil) => {
-      const arrayLower = ustensil.toLowerCase();
-      array.push(arrayLower);
+      array.push(ustensil.toLowerCase());
     });
   });
-  const arrayUnduplicated = array.filter(
-    (item, index) => array.indexOf(item) === index
-  );
 
-  return arrayUnduplicated;
-}
-
-function ingredientsFilter(recipes) {
-  const ingredientsMap = recipes.map((recipe) => recipe.ingredients);
-  let array = [];
-
-  ingredientsMap.forEach((ingredient) =>
-    ingredient.map((item) => {
-      const arrayLower = item.ingredient.toLowerCase();
-      array.push(arrayLower);
-    })
-  );
-  const arrayUnduplicated = array.filter(
-    (item, index) => array.indexOf(item) === index
-  );
-
-  return arrayUnduplicated;
+  return [...new Set(array)];
 }
 
 function globalFilter(recipes) {
