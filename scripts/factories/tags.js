@@ -71,24 +71,29 @@ function factoryListener() {
   });
 }
 
-function filterTag(target) {
+function filterTag(tag) {
   const tagsContainer = document.querySelector(".tags");
   const div = document.createElement("div");
 
-  div.innerHTML = `<span>${target.textContent}</span>
-                             <i class="fa-regular fa-circle-xmark"></i>
+  div.innerHTML = `<span>${tag.textContent}</span>
+                  <i class="fa-regular fa-circle-xmark" onClick="deleteCross(this)"></i>
                           `;
 
   tagsContainer.appendChild(div);
 }
 
+function deleteCross(element) {
+  element.parentElement.remove();
+}
+
 function findTag() {
-  const allTags = Array.from(
-    document.querySelectorAll(".ingredients-li, .appliances-li, .ustensils-li")
+  const allTags = document.querySelectorAll(
+    ".ingredients-li, .appliances-li, .ustensils-li"
   );
+
   allTags.forEach((tag) => {
-    tag.addEventListener("click", (e) => {
-      filterTag(e.target);
+    tag.addEventListener("click", () => {
+      filterTag(tag);
     });
   });
 }
