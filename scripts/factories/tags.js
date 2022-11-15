@@ -75,11 +75,17 @@ function filterTag(tag) {
   const tagsContainer = document.querySelector(".tags");
   const div = document.createElement("div");
 
-  div.innerHTML = `<span>${tag.textContent}</span>
-                  <i class="fa-regular fa-circle-xmark" onClick="deleteCross(this)"></i>
+  div.innerHTML = `<span class="key-tag-text">${tag.textContent}</span>
+                  <i class="fa-regular fa-circle-xmark delete-cross" onClick="deleteCross(this)"></i>
                           `;
-
+  div.classList.add("tags-container");
   tagsContainer.appendChild(div);
+
+  tag.className == "appliances-li"
+    ? (div.style.backgroundColor = "#68d9a4")
+    : tag.className == "ustensils-li"
+    ? (div.style.backgroundColor = "#ed6454")
+    : "";
 }
 
 function deleteCross(element) {
