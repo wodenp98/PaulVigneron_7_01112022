@@ -61,11 +61,14 @@ function factoryListener() {
   chevrons.forEach((chevron) => {
     chevron.addEventListener("click", () => {
       let dropdownDisplay = chevron.parentElement.nextElementSibling;
-      // console.log(dropdownDisplay);
+      let rotateArrow = chevron.parentElement.childNodes[3];
+      console.log(rotateArrow);
       if (dropdownDisplay.style.display === "block") {
         dropdownDisplay.style.display = "none";
+        rotateArrow.classList.remove("arrow-rotation");
       } else {
         dropdownDisplay.style.display = "block";
+        rotateArrow.classList.add("arrow-rotation");
       }
     });
   });

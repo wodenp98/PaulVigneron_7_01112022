@@ -191,6 +191,10 @@ body {
   background-color: #68D9A4;
 }
 
+.arrow-rotation {
+  transform: rotate(180deg);
+}
+
 .recipes {
   display: grid;
   grid-template-columns: 1fr 1fr auto;
