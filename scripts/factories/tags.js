@@ -59,7 +59,7 @@ function ingredientsFactory(recipes) {
 function factoryListener() {
   const chevrons = document.querySelectorAll(".fa-chevron-down");
   chevrons.forEach((chevron) => {
-    const type = chevron.parentElement.children[0];
+    let type = chevron.parentElement.children[0];
 
     chevron.addEventListener("click", () => {
       closeDropdown(type);
@@ -86,9 +86,9 @@ function closeDropdown(type) {
   const indexArr = allDropDown.indexOf(type.parentElement);
   allDropDown.splice(indexArr, 1);
 
-  allDropDown.forEach((element) => {
-    element.nextElementSibling.style.display = "none";
-    element.children[1].classList.remove("arrow-rotation");
+  allDropDown.forEach((dropdown) => {
+    dropdown.nextElementSibling.style.display = "none";
+    dropdown.children[1].classList.remove("arrow-rotation");
   });
 }
 
@@ -96,7 +96,7 @@ function filterTag(tag) {
   const tagsContainer = document.querySelector(".tags");
   const div = document.createElement("div");
 
-  div.innerHTML = `<span class="key-tag-text">${tag.textContent}</span>
+  div.innerHTML = `<span class="tag-span">${tag.textContent}</span>
                   <i class="fa-regular fa-circle-xmark delete-cross" onClick="deleteCross(this)"></i>
                           `;
   div.classList.add("tags-container");
@@ -109,10 +109,6 @@ function filterTag(tag) {
     : "";
 }
 
-function deleteCross(element) {
-  element.parentElement.remove();
-}
-
 function findTag() {
   const allTags = document.querySelectorAll(
     ".ingredients-li, .appliances-li, .ustensils-li"
@@ -120,9 +116,16 @@ function findTag() {
 
   allTags.forEach((tag) => {
     tag.addEventListener("click", () => {
+      const tagSpan = document.querySelectorAll(".tag-span");
+      console.log(tagSpan);
+
       filterTag(tag);
     });
   });
+}
+
+function deleteCross(element) {
+  element.parentElement.remove();
 }
 
 function globalTags(recipes) {
