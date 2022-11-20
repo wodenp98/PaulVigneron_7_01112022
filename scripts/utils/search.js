@@ -23,6 +23,7 @@ function searchRecipes(recipes) {
       });
 
       displayRecipes(newRecipes);
+      test(newRecipes);
     } else {
       displayRecipes(recipes);
     }
@@ -32,5 +33,72 @@ function searchRecipes(recipes) {
     } else {
       errorMsg.style.display = "none";
     }
+  });
+}
+
+function test(recipes) {
+  // on récupère les tags
+  const tagSpan = document.querySelectorAll(".tag-span");
+
+  // on créé un tableau de tags pour pouvoir lui passer une fonction
+  let arrays = Array.from(tagSpan);
+
+  const result = recipes.filter((recipe) => {
+    //on va every notre array de tag pour tester l'ensemble des éléments du tableau
+    return arrays.every((array) => {
+      const tagLow = array.textContent.toLowerCase();
+
+      return (
+        recipe.ingredients.find((ingredients) => {
+          return ingredients.ingredient.toLowerCase().includes(tagLow);
+        }) ||
+        recipe.appliance.toLowerCase().includes(tagLow) ||
+        recipe.ustensils.find((ustensil) => {
+          return ustensil.toLowerCase().includes(tagLow);
+        })
+      );
+    });
+  });
+
+  displayRecipes(result);
+  globalTags(result);
+}
+
+function testInput(recipes) {
+  const inputDropdown = document.querySelectorAll(
+    "#appliances-input, #ingredients-input, #ustensils-input"
+  );
+  inputDropdown.forEach((input) => {
+    input.addEventListener("keyup", () => {
+      const inputField = input.value.toLowerCase();
+
+      const newRecipes = recipes.filter((recipe) => {
+        return (
+          recipe.appliance.toLowerCase().includes(inputField) ||
+          recipe.ingredients.find((ingredient) =>
+            ingredient.ingredient.toLowerCase().includes(inputField)
+          ) ||
+          recipe.ustensils.find((ustensil) =>
+            ustensil.toLowerCase().includes(inputField)
+          )
+        );
+      });
+
+      displayRecipes(newRecipes);
+      globalTags(newRecipes);
+    });
+  });
+}
+
+function searchTag(recipes) {
+  const allTags = document.querySelectorAll(
+    ".ingredients-li, .appliances-li, .ustensils-li"
+  );
+
+  allTags.forEach((tag) => {
+    tag.addEventListener("click", () => {
+      filterTag(tag);
+      test(recipes);
+    });
   });
 }

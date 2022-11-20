@@ -22,9 +22,11 @@ async function displayRecipes(recipes) {
 async function init() {
   const { recipes } = await getRecipes();
   displayRecipes(recipes);
+  factoryListener();
+  searchRecipes(recipes);
+  testInput(recipes);
   globalFilter(recipes);
   globalTags(recipes);
-  searchRecipes(recipes);
 }
 
 init();

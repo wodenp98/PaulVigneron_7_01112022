@@ -163,6 +163,7 @@ body {
 }
 .ingredients-li, .appliances-li, .ustensils-li {
   margin-top: 10px;
+  margin-right: 5px;
 }
 
 #ingredients-list, #appliances-list, #ustensils-list {
