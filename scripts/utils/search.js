@@ -23,9 +23,10 @@ function searchRecipes(recipes) {
       });
 
       displayRecipes(newRecipes);
-      test(newRecipes);
+      searchTag(newRecipes);
     } else {
       displayRecipes(recipes);
+      searchTag(recipes);
     }
 
     if (emptyRecipe.childNodes.length === 0) {
@@ -36,7 +37,7 @@ function searchRecipes(recipes) {
   });
 }
 
-function test(recipes) {
+function searchTag(recipes) {
   // on récupère les tags
   const tagSpan = document.querySelectorAll(".tag-span");
 
@@ -64,7 +65,7 @@ function test(recipes) {
   globalTags(result);
 }
 
-function testInput(recipes) {
+function searchInput(recipes) {
   const inputDropdown = document.querySelectorAll(
     "#appliances-input, #ingredients-input, #ustensils-input"
   );
@@ -86,19 +87,6 @@ function testInput(recipes) {
 
       displayRecipes(newRecipes);
       globalTags(newRecipes);
-    });
-  });
-}
-
-function searchTag(recipes) {
-  const allTags = document.querySelectorAll(
-    ".ingredients-li, .appliances-li, .ustensils-li"
-  );
-
-  allTags.forEach((tag) => {
-    tag.addEventListener("click", () => {
-      filterTag(tag);
-      test(recipes);
     });
   });
 }
