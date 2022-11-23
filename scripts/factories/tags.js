@@ -22,6 +22,7 @@ function ustensilsFactory(recipes) {
   const arrayFiltered = ustensilsFilter(recipes);
 
   arrayFiltered.forEach((item) => {
+    // console.log(item);
     const li = document.createElement("li");
     li.classList.add("ustensils-li");
     li.innerHTML = `${item}`;
@@ -42,30 +43,14 @@ function ingredientsFactory(recipes) {
   });
 }
 
-function filterTag(recipes) {
-  const li = document.querySelectorAll(
-    ".appliances-li, .ustensils-li, .ingredients-li"
-  );
-  const tagsArray = Array.from(li);
-
-  tagsArray.map((item) =>
-    item.addEventListener("click", () => {
-      let className = item.className;
-      let text = item.innerText;
-      tagsSelected.push({ item, className, text });
-      displayTag(tagsSelected);
-      searchTag(recipes);
-      deleteCross(recipes);
-    })
-  );
-}
+// find bug and it's done
 
 function displayTag(tagsSelected) {
   const tagsContainer = document.querySelector(".tags");
   const div = document.createElement("div");
 
   tagsSelected.forEach((element) => {
-    div.innerHTML = `<span class="tag-span">${element.text}</span>
+    div.innerHTML = `<span class="tag-span">${element.spanText}</span>
     <i class="fa-regular fa-circle-xmark delete-cross"></i>
       `;
 
@@ -76,33 +61,73 @@ function displayTag(tagsSelected) {
       ? (div.style.backgroundColor = "#68d9a4")
       : element.className == "ustensils-li"
       ? (div.style.backgroundColor = "#ed6454")
+      : element.className == "ingredients-li"
+      ? (div.style.backgroundColor = "#3282f7")
       : "";
   });
 }
 
 function deleteCross(recipes) {
-  const cross = document.querySelectorAll(".delete-cross");
-  const keyTag = document.querySelectorAll(".tag-span");
-  let array = Array.from(keyTag);
-
-  for (let i = 0; i < cross.length; i++) {
-    const tagDeleted = cross[i];
+  const deleteTag = document.querySelectorAll(".delete-cross");
+  for (let i = 0; i < deleteTag.length; i++) {
+    const tagDeleted = deleteTag[i];
 
     tagDeleted.addEventListener("click", () => {
+      const tagSpan = document.querySelectorAll(".tag-span");
+
+      // on créé un tableau de tags pour pouvoir lui passer une fonction
+      let array = Array.from(tagSpan);
+      console.log(array);
+
       let selectValue = tagDeleted.parentNode.firstChild;
+      console.log(selectValue);
       selectValue.parentElement.remove();
       let myIndex = array.indexOf(selectValue);
+      console.log(myIndex);
 
       if (myIndex !== -1) {
         array.splice(myIndex, 1);
-        tagsSelected.splice(myIndex, 1);
+        console.log(array);
       }
-      const test = tagsSelected.filter((item) => {
-        console.log(item.text);
+
+      const result = recipes.filter((recipe) => {
+        console.log(recipe);
+        return array.every((filt) => {
+          const filterText = filt.textContent.toLowerCase();
+
+          return (
+            recipe.ingredients.some((ingredients) => {
+              return ingredients.ingredient.toLowerCase().includes(filterText);
+            }) ||
+            recipe.appliance.toLowerCase().includes(filterText) ||
+            recipe.ustensils.some((ustensil) => {
+              return ustensil.toLowerCase().includes(filterText);
+            })
+          );
+        });
       });
-      console.log(recipes);
+      displayRecipes(result);
+      searchTag(result);
     });
   }
+}
+
+function filterTag(recipes) {
+  const textTag = document.querySelectorAll(
+    ".appliances-li, .ustensils-li, .ingredients-li"
+  );
+
+  textTag.forEach((text) => {
+    text.addEventListener("click", () => {
+      let className = text.className;
+      let spanText = text.innerText;
+      tagsSelected.push({ className, spanText });
+
+      displayTag(tagsSelected);
+      searchTag(recipes);
+      deleteCross(recipes);
+    });
+  });
 }
 
 function globalTags(recipes) {
@@ -110,5 +135,4 @@ function globalTags(recipes) {
   appliancesFactory(recipes);
   ustensilsFactory(recipes);
   filterTag(recipes);
-  // deleteCross(recipes);
 }
