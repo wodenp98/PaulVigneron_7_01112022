@@ -25,7 +25,6 @@ async function init() {
   factoryListener();
   searchRecipes(recipes);
   filterTag(recipes);
-
   searchInput(recipes);
   globalFilter(recipes);
   globalTags(recipes);

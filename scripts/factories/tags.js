@@ -69,47 +69,28 @@ function displayTag(tagsSelected) {
 
 function deleteCross(recipes) {
   const deleteTag = document.querySelectorAll(".delete-cross");
-  for (let i = 0; i < deleteTag.length; i++) {
-    const tagDeleted = deleteTag[i];
-
-    tagDeleted.addEventListener("click", () => {
+  deleteTag.forEach((element) =>
+    element.addEventListener("click", () => {
       const tagSpan = document.querySelectorAll(".tag-span");
 
       // on créé un tableau de tags pour pouvoir lui passer une fonction
       let array = Array.from(tagSpan);
       console.log(array);
 
-      let selectValue = tagDeleted.parentNode.firstChild;
-      console.log(selectValue);
-      selectValue.parentElement.remove();
-      let myIndex = array.indexOf(selectValue);
-      console.log(myIndex);
+      let spanElement = element.parentNode.firstChild;
+      spanElement.parentElement.remove();
+      let indexArr = array.indexOf(spanElement);
 
-      if (myIndex !== -1) {
-        array.splice(myIndex, 1);
+      if (indexArr !== -1) {
+        array.splice(indexArr, 1);
         console.log(array);
       }
+      searchTag(recipes);
 
-      const result = recipes.filter((recipe) => {
-        console.log(recipe);
-        return array.every((filt) => {
-          const filterText = filt.textContent.toLowerCase();
-
-          return (
-            recipe.ingredients.some((ingredients) => {
-              return ingredients.ingredient.toLowerCase().includes(filterText);
-            }) ||
-            recipe.appliance.toLowerCase().includes(filterText) ||
-            recipe.ustensils.some((ustensil) => {
-              return ustensil.toLowerCase().includes(filterText);
-            })
-          );
-        });
-      });
-      displayRecipes(result);
-      searchTag(result);
-    });
-  }
+      console.log(array);
+      console.log(recipes);
+    })
+  );
 }
 
 function filterTag(recipes) {
