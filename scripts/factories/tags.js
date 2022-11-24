@@ -8,16 +8,15 @@ let appliancesArr = [];
 
 function ingredientsFilter(recipes) {
   for (let i = 0; i < recipes.length; i++) {
-    const allRecipes = recipes[i];
+    const test = recipes[i].ingredients;
 
-    for (let j = 0; j < allRecipes.ingredients.length; j++) {
-      const ingredients = allRecipes.ingredients[j];
-      ingredientsArr.push(ingredients.ingredient.toLowerCase());
+    for (let j = 0; j < test.length; j++) {
+      const element = test[j].ingredient.toLowerCase();
+      ingredientsArr.push(element);
     }
     ingredientsArr = [...new Set(ingredientsArr)];
   }
 }
-
 function ustensilsFilter(recipes) {
   for (let i = 0; i < recipes.length; i++) {
     const allRecipes = recipes[i];
@@ -71,3 +70,5 @@ function displayTag(recipes) {
     appliancesSection.appendChild(li);
   }
 }
+
+// filtrer les arrays en fonction du résultat de la search bar

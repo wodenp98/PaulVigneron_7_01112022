@@ -2,16 +2,15 @@ function searchBar(recipes) {
   const searchBarInput = document.getElementById("search-input");
   const emptyRecipe = document.querySelector(".recipes");
   const errorMsg = document.querySelector(".search-error");
+  let array = [];
 
   searchBarInput.addEventListener("keyup", (e) => {
     e.preventDefault();
     const input = searchBarInput.value.toLowerCase();
-    let array = [];
 
     if (input.length >= 3) {
       for (let i = 0; i < recipes.length; i++) {
         let allRecipes = recipes[i];
-        console.log(allRecipes);
 
         function findIngredients() {
           for (let j = 0; j < allRecipes.ingredients.length; i++) {
@@ -41,9 +40,9 @@ function searchBar(recipes) {
           findDescription
         ) {
           array.push(allRecipes);
+          console.log(array);
         }
       }
-      console.log(array);
       displayRecipes(array);
     } else {
       displayRecipes(recipes);
