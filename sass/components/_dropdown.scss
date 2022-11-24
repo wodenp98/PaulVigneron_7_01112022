@@ -16,6 +16,17 @@
         margin-top: 10px;
     }
 
+    &-tags {
+        display: none;
+        background-color: #3282f7;
+        cursor: pointer;
+        color: white;
+        display: none;
+        margin-top: -5px;
+        padding-top: 10px;
+        border-radius: 0 0 5px 5px;
+    }
+
     &-container {
         display: flex;
         align-items: center;
@@ -49,6 +60,22 @@
             height: fit-content;
         }
     }
+
+    &-li {
+        margin-top: 10px;
+        margin-right: 5px;
+    }
+
+}
+
+#ingredients-list, #appliances-list, #ustensils-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    max-height: 500px;
+    padding: 10px;
+    overflow: auto;
+    font-family: "Lato", sans-serif;
+    font-size: 18px;
 }
 
 .red {
@@ -57,4 +84,16 @@
 
 .green {
     background-color: #68D9A4;
+}
+
+.red-tag {
+    background-color: #ED6454;
+}
+
+.green-tag {
+    background-color: #68D9A4;
+}
+
+.arrow-rotation {
+    transform: rotate(180deg)
 }
