@@ -15,7 +15,7 @@ function ingredientsFilter(recipes) {
 }
 
 function appliancesFilter(recipes) {
-  const appliancesMap = recipes.map((recipe) => recipe.appliance);
+  const appliancesMap = recipes.map((recipe) => recipe.appliance.toLowerCase());
 
   return [...new Set(appliancesMap)];
 }
@@ -52,7 +52,6 @@ function ustensilsFactory(recipes) {
   const arrayFiltered = ustensilsFilter(recipes);
 
   arrayFiltered.forEach((item) => {
-    // console.log(item);
     const li = document.createElement("li");
     li.classList.add("ustensils-li");
     li.innerHTML = `${item}`;
