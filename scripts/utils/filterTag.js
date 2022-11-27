@@ -25,11 +25,11 @@ function displayTags() {
       `;
     div.classList.add("tags-container");
     tagsContainer.appendChild(div);
-    element.className == "appliances-li"
+    element.className == "appliances-li disabled"
       ? (div.style.backgroundColor = "#68d9a4")
-      : element.className == "ustensils-li"
+      : element.className == "ustensils-li disabled"
       ? (div.style.backgroundColor = "#ed6454")
-      : element.className == "ingredients-li"
+      : element.className == "ingredients-li disabled"
       ? (div.style.backgroundColor = "#3282f7")
       : "";
   });
@@ -37,14 +37,10 @@ function displayTags() {
 
 function searchTags(recipes) {
   console.log(tagsClicked);
-  const tagSpan = document.querySelectorAll(".tag-span");
-
-  // on créé un tableau de tags pour pouvoir lui passer une fonction
-  let arrays = Array.from(tagSpan);
 
   const result = recipes.filter((recipe) => {
     //on va every notre array de tag pour tester l'ensemble des éléments du tableau
-    return arrays.every((array) => {
+    return tagsClicked.every((array) => {
       const tagLow = array.textContent.toLowerCase();
 
       return (
@@ -60,5 +56,5 @@ function searchTags(recipes) {
   });
 
   displayRecipes(result);
-  allTags(result);
+  // allTags(result);
 }

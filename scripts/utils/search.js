@@ -68,39 +68,38 @@ function searchSelectInput(recipes) {
     const input = inputDropdown[index];
 
     input.addEventListener("keyup", () => {
-      if (input.value.length >= 1) {
-        const inputField = input.value.toLowerCase();
+      const inputField = input.value.toLowerCase();
 
-        for (let j = 0; j < recipes.length; j++) {
-          let allRecipes = recipes[j];
+      for (let j = 0; j < recipes.length; j++) {
+        let allRecipes = recipes[j];
 
-          function ingredient() {
-            for (let k = 0; k < allRecipes.ingredients.length; k++) {
-              const element = allRecipes.ingredients[k];
-              return element.ingredient.toLowerCase().includes(inputField);
-            }
-          }
-
-          function ustensil() {
-            for (let k = 0; k < allRecipes.ustensils.length; k++) {
-              const element = allRecipes.ustensils[k];
-              return element.toLowerCase().includes(inputField);
-            }
-          }
-
-          const appliances = allRecipes.appliance
+        for (let k = 0; k < allRecipes.ingredients.length; k++) {
+          const element = allRecipes.ingredients[k].ingredient
             .toLowerCase()
             .includes(inputField);
-
-          if (ingredient() || ustensil() || appliances) {
-            array.push(allRecipes);
-            console.log(array);
-          }
+          // return element.ingredient.toLowerCase().includes(inputField);
         }
-      } else {
-        allTags(recipes);
-        displayRecipes(recipes);
+        displayRecipes(allRecipes);
+
+        // function ustensil() {
+        //   for (let k = 0; k < allRecipes.ustensils.length; k++) {
+        //     const element = allRecipes.ustensils[k];
+        //     return element.toLowerCase().includes(inputField);
+        //   }
+        // }
+
+        // const appliances = allRecipes.appliance
+        //   .toLowerCase()
+        //   .includes(inputField);
+
+        // if (ingredient() || ustensil() || appliances) {
+        //   array.push(allRecipes);
+        //   console.log(array);
+        // }
       }
+      // } else {
+      //   allTags(recipes);
+      //   displayRecipes(recipes);
     });
   }
 }
