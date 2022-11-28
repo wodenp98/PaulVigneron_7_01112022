@@ -1,7 +1,7 @@
 const ingredientsSection = document.getElementById("ingredients-list");
 const appliancesSection = document.getElementById("appliances-list");
 const ustensilsSection = document.getElementById("ustensils-list");
-let tagsSelected = [];
+let tagSelected = [];
 
 function appliancesFactory(recipes) {
   appliancesSection.innerHTML = "";
@@ -43,8 +43,6 @@ function ingredientsFactory(recipes) {
   });
 }
 
-// find bug and it's done
-
 function filterTag(recipes) {
   const textTag = document.querySelectorAll(
     ".appliances-li, .ustensils-li, .ingredients-li"
@@ -52,30 +50,29 @@ function filterTag(recipes) {
 
   textTag.forEach((text) => {
     text.addEventListener("click", () => {
-      tagsSelected.push(text);
-      // let className = text.className;
-      // let spanText = text.innerText;
-      // tagsSelected.push({ className, spanText });
-
-      displayTag(tagsSelected);
+      console.log(text);
+      tagSelected.push(text);
+      displayTags(tagSelected);
       searchTag(recipes);
-      deleteCross(recipes);
     });
   });
 }
 
-function displayTag(tagsSelected) {
-  console.log(tagsSelected);
-  const tagsContainer = document.querySelector(".tags");
-  const div = document.createElement("div");
+function displayTags(tagSelected) {
+  const tags = document.querySelector(".tags");
 
-  tagsSelected.forEach((element) => {
-    div.innerHTML = `<span class="tag-span">${element.innerText}</span>
+  tags.innerHTML = "";
+  console.log(tagSelected);
+
+  tagSelected.forEach((element, index) => {
+    const div = document.createElement("div");
+    console.log(element);
+    div.innerHTML = `<span class="tag-span" data-id="${index}">${element.innerText}</span>
     <i class="fa-regular fa-circle-xmark delete-cross"></i>
       `;
 
     div.classList.add("tags-container");
-    tagsContainer.appendChild(div);
+    tags.appendChild(div);
 
     element.className == "appliances-li"
       ? (div.style.backgroundColor = "#68d9a4")
@@ -84,33 +81,27 @@ function displayTag(tagsSelected) {
       : element.className == "ingredients-li"
       ? (div.style.backgroundColor = "#3282f7")
       : "";
+
+    deleteCross(index);
   });
 }
 
-function deleteCross(recipes) {
-  const deleteTag = document.querySelectorAll(".delete-cross");
-  deleteTag.forEach((element) =>
-    element.addEventListener("click", () => {
-      const tagSpan = document.querySelectorAll(".tag-span");
-
-      // on créé un tableau de tags pour pouvoir lui passer une fonction
-      let array = Array.from(tagSpan);
-      console.log(array);
-
-      let spanElement = element.parentNode.firstChild;
-      spanElement.parentElement.remove();
-      let indexArr = array.indexOf(spanElement);
-
-      if (indexArr !== -1) {
-        array.splice(indexArr, 1);
-        console.log(array);
-      }
-      searchTag(recipes);
-
-      console.log(array);
-      console.log(recipes);
-    })
+function deleteCross(index) {
+  const tagSpan = document.querySelector(
+    `.tag-span[data-id='${index}'] ~ .delete-cross`
   );
+  console.log(tagSelected);
+
+  tagSpan.addEventListener("click", () => {
+    console.log(tagSpan);
+    console.log(index);
+
+    if (index !== -1) {
+      tagSelected.splice(index, 1);
+      displayTags(tagSelected);
+    }
+    searchTag(recipes);
+  });
 }
 
 function globalTags(recipes) {

@@ -1,8 +1,10 @@
+let recipes = [];
+
 async function getRecipes() {
   try {
     const response = await fetch("/data/recipes.json");
     const data = await response.json();
-    return { recipes: data.recipes };
+    return data.recipes;
   } catch (error) {
     console.log(error);
   }
@@ -20,7 +22,7 @@ async function displayRecipes(recipes) {
 }
 
 async function init() {
-  const { recipes } = await getRecipes();
+  recipes = await getRecipes();
   displayRecipes(recipes);
 
   factoryListener();
