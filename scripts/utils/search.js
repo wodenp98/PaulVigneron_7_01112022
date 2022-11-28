@@ -62,44 +62,45 @@ function searchSelectInput(recipes) {
     "#appliances-input, #ingredients-input, #ustensils-input"
   );
 
-  let array = [];
-
   for (let index = 0; index < inputDropdown.length; index++) {
     const input = inputDropdown[index];
 
     input.addEventListener("keyup", () => {
       const inputField = input.value.toLowerCase();
+      const results = [];
+      for (let i = 0; i < recipes.length; i++) {
+        let allRecipes = recipes[i];
 
-      for (let j = 0; j < recipes.length; j++) {
-        let allRecipes = recipes[j];
-
-        for (let k = 0; k < allRecipes.ingredients.length; k++) {
-          const element = allRecipes.ingredients[k].ingredient
-            .toLowerCase()
-            .includes(inputField);
-          // return element.ingredient.toLowerCase().includes(inputField);
+        if (input.id === "ingredients-input") {
+          for (let j = 0; j < allRecipes.ingredients.length; j++) {
+            const ingredient = allRecipes.ingredients[j].ingredient;
+            console.log(ingredient);
+            if (ingredient.toLowerCase().includes(inputField.toLowerCase())) {
+              results.push(allRecipes);
+              break;
+            }
+          }
+          allTags(results);
         }
-        displayRecipes(allRecipes);
 
-        // function ustensil() {
-        //   for (let k = 0; k < allRecipes.ustensils.length; k++) {
-        //     const element = allRecipes.ustensils[k];
-        //     return element.toLowerCase().includes(inputField);
+        // if (recipe.name.toLowerCase().includes(inputField.toLowerCase())) {
+        //   results.push(recipe);
+        //   // continue;
+        // } else if (
+        //   recipe.description.toLowerCase().includes(inputField.toLowerCase())
+        // ) {
+        //   results.push(recipe);
+        //   // continue;
+        // }
+        // for (let i = 0; i < recipe.ingredients.length; i++) {
+        //   const ingredient = recipe.ingredients[i].ingredient;
+        //   if (ingredient.toLowerCase().includes(inputField.toLowerCase())) {
+        //     results.push(recipe);
+        //     // break;
         //   }
         // }
-
-        // const appliances = allRecipes.appliance
-        //   .toLowerCase()
-        //   .includes(inputField);
-
-        // if (ingredient() || ustensil() || appliances) {
-        //   array.push(allRecipes);
-        //   console.log(array);
-        // }
       }
-      // } else {
-      //   allTags(recipes);
-      //   displayRecipes(recipes);
+      // console.log(results);
     });
   }
 }
