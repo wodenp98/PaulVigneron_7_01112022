@@ -10,16 +10,17 @@ function selectTags(recipes) {
       text.classList.add("disabled");
       tagsClicked.push(text);
       displayTags();
-      searchTags(recipes);
+      // searchTags(recipes);
     });
   });
 }
 
 function displayTags() {
   const tagsContainer = document.querySelector(".tags");
-  const div = document.createElement("div");
+  tagsContainer.innerHTML = "";
 
   tagsClicked.forEach((element) => {
+    const div = document.createElement("div");
     div.innerHTML = `<span class="tag-span">${element.innerText}</span>
     <i class="fa-regular fa-circle-xmark delete-cross"></i>
       `;
@@ -35,25 +36,25 @@ function displayTags() {
   });
 }
 
-function searchTags(recipes) {
-  console.log(tagsClicked);
+// function searchTags(recipes) {
+//   console.log(tagsClicked);
 
-  const result = recipes.filter((recipe) => {
-    return tagsClicked.every((array) => {
-      const tagLow = array.textContent.toLowerCase();
+//   const result = recipes.filter((recipe) => {
+//     return tagsClicked.every((array) => {
+//       const tagLow = array.textContent.toLowerCase();
 
-      return (
-        recipe.ingredients.find((ingredients) => {
-          return ingredients.ingredient.toLowerCase().includes(tagLow);
-        }) ||
-        recipe.appliance.toLowerCase().includes(tagLow) ||
-        recipe.ustensils.find((ustensil) => {
-          return ustensil.toLowerCase().includes(tagLow);
-        })
-      );
-    });
-  });
+//       return (
+//         recipe.ingredients.find((ingredients) => {
+//           return ingredients.ingredient.toLowerCase().includes(tagLow);
+//         }) ||
+//         recipe.appliance.toLowerCase().includes(tagLow) ||
+//         recipe.ustensils.find((ustensil) => {
+//           return ustensil.toLowerCase().includes(tagLow);
+//         })
+//       );
+//     });
+//   });
 
-  displayRecipes(result);
-  // allTags(result);
-}
+//   displayRecipes(result);
+//   allTags(result);
+// }

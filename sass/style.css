@@ -87,8 +87,7 @@ body {
 }
 
 .disabled {
-  color: #cccccc;
-  pointer-events: none;
+  display: none;
 }
 
 .dropdown {
