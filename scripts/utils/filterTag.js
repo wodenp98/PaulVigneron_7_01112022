@@ -39,7 +39,6 @@ function searchTags(recipes) {
   console.log(tagsClicked);
 
   const result = recipes.filter((recipe) => {
-    //on va every notre array de tag pour tester l'ensemble des éléments du tableau
     return tagsClicked.every((array) => {
       const tagLow = array.textContent.toLowerCase();
 
