@@ -45,12 +45,32 @@ function ingredientsFactory(recipes) {
 
 // find bug and it's done
 
+function filterTag(recipes) {
+  const textTag = document.querySelectorAll(
+    ".appliances-li, .ustensils-li, .ingredients-li"
+  );
+
+  textTag.forEach((text) => {
+    text.addEventListener("click", () => {
+      tagsSelected.push(text);
+      // let className = text.className;
+      // let spanText = text.innerText;
+      // tagsSelected.push({ className, spanText });
+
+      displayTag(tagsSelected);
+      searchTag(recipes);
+      deleteCross(recipes);
+    });
+  });
+}
+
 function displayTag(tagsSelected) {
+  console.log(tagsSelected);
   const tagsContainer = document.querySelector(".tags");
   const div = document.createElement("div");
 
   tagsSelected.forEach((element) => {
-    div.innerHTML = `<span class="tag-span">${element.spanText}</span>
+    div.innerHTML = `<span class="tag-span">${element.innerText}</span>
     <i class="fa-regular fa-circle-xmark delete-cross"></i>
       `;
 
@@ -91,24 +111,6 @@ function deleteCross(recipes) {
       console.log(recipes);
     })
   );
-}
-
-function filterTag(recipes) {
-  const textTag = document.querySelectorAll(
-    ".appliances-li, .ustensils-li, .ingredients-li"
-  );
-
-  textTag.forEach((text) => {
-    text.addEventListener("click", () => {
-      let className = text.className;
-      let spanText = text.innerText;
-      tagsSelected.push({ className, spanText });
-
-      displayTag(tagsSelected);
-      searchTag(recipes);
-      deleteCross(recipes);
-    });
-  });
 }
 
 function globalTags(recipes) {
