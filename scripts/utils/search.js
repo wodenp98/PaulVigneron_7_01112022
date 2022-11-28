@@ -67,40 +67,46 @@ function searchSelectInput(recipes) {
 
     input.addEventListener("keyup", () => {
       const inputField = input.value.toLowerCase();
-      const results = [];
+      let array = [];
+
       for (let i = 0; i < recipes.length; i++) {
         let allRecipes = recipes[i];
 
-        if (input.id === "ingredients-input") {
+        function findIngredients() {
           for (let j = 0; j < allRecipes.ingredients.length; j++) {
-            const ingredient = allRecipes.ingredients[j].ingredient;
-            console.log(ingredient);
-            if (ingredient.toLowerCase().includes(inputField.toLowerCase())) {
-              results.push(allRecipes);
-              break;
+            const ingredients =
+              allRecipes.ingredients[j].ingredient.toLowerCase();
+            if (ingredients.includes(inputField)) {
+              return array.push(allRecipes);
             }
           }
-          allTags(results);
         }
 
-        // if (recipe.name.toLowerCase().includes(inputField.toLowerCase())) {
-        //   results.push(recipe);
-        //   // continue;
-        // } else if (
-        //   recipe.description.toLowerCase().includes(inputField.toLowerCase())
-        // ) {
-        //   results.push(recipe);
-        //   // continue;
-        // }
-        // for (let i = 0; i < recipe.ingredients.length; i++) {
-        //   const ingredient = recipe.ingredients[i].ingredient;
-        //   if (ingredient.toLowerCase().includes(inputField.toLowerCase())) {
-        //     results.push(recipe);
-        //     // break;
-        //   }
-        // }
+        function findUstensils() {
+          for (let j = 0; j < allRecipes.ustensils.length; j++) {
+            const ustensils = allRecipes.ustensils[j].toLowerCase();
+            if (ustensils.includes(inputField)) {
+              return array.push(allRecipes);
+            }
+          }
+        }
+
+        function findAppliances() {
+          const appliances = allRecipes.appliance.toLowerCase();
+
+          if (appliances.includes(inputField)) {
+            return array.push(allRecipes);
+          }
+        }
+
+        if (findIngredients() || findUstensils() || findAppliances()) {
+          allTags(array);
+          displayRecipes(array);
+        } else {
+          allTags(recipes);
+          displayRecipes(recipes);
+        }
       }
-      // console.log(results);
     });
   }
 }
