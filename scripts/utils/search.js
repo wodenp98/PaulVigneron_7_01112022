@@ -116,3 +116,28 @@ function searchSelectInput(recipes) {
     });
   }
 }
+
+function searchTag(recipes) {
+  const tagSpan = document.querySelectorAll(".tag-span");
+
+  let arrays = Array.from(tagSpan);
+  // modif
+  const result = recipes.filter((recipe) => {
+    return arrays.every((array) => {
+      const tagLow = array.textContent.toLowerCase();
+
+      return (
+        recipe.ingredients.find((ingredients) => {
+          return ingredients.ingredient.toLowerCase().includes(tagLow);
+        }) ||
+        recipe.appliance.toLowerCase().includes(tagLow) ||
+        recipe.ustensils.find((ustensil) => {
+          return ustensil.toLowerCase().includes(tagLow);
+        })
+      );
+    });
+  });
+
+  displayRecipes(result);
+  allTags(result);
+}

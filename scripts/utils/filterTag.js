@@ -1,62 +1,39 @@
-let tagsClicked = [];
+function ingredientsFilter(recipes) {
+  // modif
+  const ingredientsMap = recipes.map((recipe) => recipe.ingredients);
+  let array = [];
 
-function selectTags(recipes) {
-  const textTag = document.querySelectorAll(
-    ".appliances-li, .ustensils-li, .ingredients-li"
-  );
-
-  textTag.forEach((text) => {
-    text.addEventListener("click", () => {
-      text.classList.add("disabled");
-      tagsClicked.push(text);
-      displayTags();
-      searchTags(recipes);
+  ingredientsMap.forEach((item) => {
+    item.forEach((recipe) => {
+      array.push(recipe.ingredient.toLowerCase());
     });
   });
+  return [...new Set(array)];
 }
 
-function displayTags() {
-  const tags = document.querySelector(".tags");
-  tags.innerHTML = "";
+function appliancesFilter(recipes) {
+  // modif
+  const appliancesMap = recipes.map((recipe) => recipe.appliance);
 
-  tagsClicked.forEach((element, index) => {
-    const div = document.createElement("div");
-    div.innerHTML = `<span class="tag-span data-id="${index}">${element.innerText}</span>
-    <i class="fa-regular fa-circle-xmark delete-cross"></i>
-      `;
-
-    div.classList.add("tags-container");
-    tags.appendChild(div);
-
-    element.className == "appliances-li disabled"
-      ? (div.style.backgroundColor = "#68d9a4")
-      : element.className == "ustensils-li disabled"
-      ? (div.style.backgroundColor = "#ed6454")
-      : element.className == "ingredients-li disabled"
-      ? (div.style.backgroundColor = "#3282f7")
-      : "";
-  });
+  return [...new Set(appliancesMap)];
 }
 
-function searchTags(recipes) {
-  console.log(tagsClicked);
+function ustensilsFilter(recipes) {
+  // modif
+  const ustensilsMap = recipes.map((recipe) => recipe.ustensils);
+  let array = [];
 
-  const result = recipes.filter((recipe) => {
-    return tagsClicked.every((array) => {
-      const tagLow = array.textContent.toLowerCase();
-
-      return (
-        recipe.ingredients.find((ingredients) => {
-          return ingredients.ingredient.toLowerCase().includes(tagLow);
-        }) ||
-        recipe.appliance.toLowerCase().includes(tagLow) ||
-        recipe.ustensils.find((ustensil) => {
-          return ustensil.toLowerCase().includes(tagLow);
-        })
-      );
+  ustensilsMap.forEach((item) => {
+    item.forEach((ustensil) => {
+      array.push(ustensil.toLowerCase());
     });
   });
 
-  displayRecipes(result);
-  allTags(result);
+  return [...new Set(array)];
+}
+
+function globalFilter(recipes) {
+  ingredientsFilter(recipes);
+  appliancesFilter(recipes);
+  ustensilsFilter(recipes);
 }

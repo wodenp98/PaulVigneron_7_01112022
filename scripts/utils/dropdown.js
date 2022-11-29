@@ -6,7 +6,7 @@ function closeDropdown(type) {
   );
   const indexArr = allDropDown.indexOf(type.parentElement);
   allDropDown.splice(indexArr, 1);
-
+  // modif
   allDropDown.forEach((dropdown) => {
     dropdown.nextElementSibling.style.display = "none";
     dropdown.children[1].classList.remove("arrow-rotation");

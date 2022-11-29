@@ -1,8 +1,10 @@
+let recipes = [];
+
 async function getRecipes() {
   try {
     const response = await fetch("/data/recipes.json");
     const data = await response.json();
-    return { recipes: data.recipes };
+    return data.recipes;
   } catch (error) {
     console.log(error);
   }
@@ -11,7 +13,7 @@ async function getRecipes() {
 async function displayRecipes(recipes) {
   const recipesSection = document.querySelector(".recipes");
   recipesSection.innerHTML = "";
-
+  // modif
   recipes.forEach((recipe) => {
     const recipeModel = recipeFactory(recipe);
     const recipeCardDOM = recipeModel.getRecipeCardDOM();
@@ -20,13 +22,14 @@ async function displayRecipes(recipes) {
 }
 
 async function init() {
-  const { recipes } = await getRecipes();
+  recipes = await getRecipes();
   displayRecipes(recipes);
-  searchBar(recipes);
   factoryListener();
-  searchSelectInput(recipes);
+  globalFilter(recipes);
   allTags(recipes);
-  selectTags(recipes);
+  searchBar(recipes);
+  searchTag(recipes);
+  searchSelectInput(recipes);
 }
 
 init();
