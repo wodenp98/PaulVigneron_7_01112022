@@ -22,7 +22,6 @@ function ustensilsFactory(recipes) {
   const arrayFiltered = ustensilsFilter(recipes);
 
   arrayFiltered.forEach((item) => {
-    // console.log(item);
     const li = document.createElement("li");
     li.classList.add("ustensils-li");
     li.innerHTML = `${item}`;
@@ -47,10 +46,17 @@ function filterTag(recipes) {
   const textTag = document.querySelectorAll(
     ".appliances-li, .ustensils-li, .ingredients-li"
   );
+  const tagSpan = document.querySelectorAll(".tag-span");
+  let array = Array.from(tagSpan);
 
   textTag.forEach((text) => {
+    array.map((tag) => {
+      if (text.textContent == tag.textContent) {
+        text.classList.add("disabled");
+      }
+    });
+
     text.addEventListener("click", () => {
-      console.log(text);
       tagSelected.push(text);
       displayTags(tagSelected);
       searchTag(recipes);
@@ -62,11 +68,9 @@ function displayTags(tagSelected) {
   const tags = document.querySelector(".tags");
 
   tags.innerHTML = "";
-  console.log(tagSelected);
 
   tagSelected.forEach((element, index) => {
     const div = document.createElement("div");
-    console.log(element);
     div.innerHTML = `<span class="tag-span" data-id="${index}">${element.innerText}</span>
     <i class="fa-regular fa-circle-xmark delete-cross"></i>
       `;
@@ -90,12 +94,8 @@ function deleteCross(index) {
   const tagSpan = document.querySelector(
     `.tag-span[data-id='${index}'] ~ .delete-cross`
   );
-  console.log(tagSelected);
 
   tagSpan.addEventListener("click", () => {
-    console.log(tagSpan);
-    console.log(index);
-
     if (index !== -1) {
       tagSelected.splice(index, 1);
       displayTags(tagSelected);

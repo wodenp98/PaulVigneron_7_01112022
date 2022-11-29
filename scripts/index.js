@@ -32,7 +32,6 @@ async function init() {
 
   searchRecipes(recipes);
   searchTag(recipes);
-  // filterTag(recipes);
   searchInput(recipes);
 }
 
