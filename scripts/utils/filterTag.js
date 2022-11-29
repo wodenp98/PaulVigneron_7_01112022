@@ -1,34 +1,37 @@
 function ingredientsFilter(recipes) {
-  // modif
-  const ingredientsMap = recipes.map((recipe) => recipe.ingredients);
   let array = [];
+  for (let index = 0; index < recipes.length; index++) {
+    let element = recipes[index].ingredients;
 
-  ingredientsMap.forEach((item) => {
-    item.forEach((recipe) => {
-      array.push(recipe.ingredient.toLowerCase());
-    });
-  });
+    for (let j = 0; j < element.length; j++) {
+      let ingredients = element[j];
+      array.push(ingredients.ingredient.toLowerCase());
+    }
+  }
   return [...new Set(array)];
 }
 
 function appliancesFilter(recipes) {
-  // modif
-  const appliancesMap = recipes.map((recipe) => recipe.appliance);
+  let array = [];
 
-  return [...new Set(appliancesMap)];
+  for (let index = 0; index < recipes.length; index++) {
+    let element = recipes[index].appliance;
+    array.push(element.toLowerCase());
+  }
+
+  return [...new Set(array)];
 }
 
 function ustensilsFilter(recipes) {
-  // modif
-  const ustensilsMap = recipes.map((recipe) => recipe.ustensils);
   let array = [];
+  for (let index = 0; index < recipes.length; index++) {
+    let element = recipes[index].ustensils;
 
-  ustensilsMap.forEach((item) => {
-    item.forEach((ustensil) => {
-      array.push(ustensil.toLowerCase());
-    });
-  });
-
+    for (let j = 0; j < element.length; j++) {
+      let ustensils = element[j];
+      array.push(ustensils.toLowerCase());
+    }
+  }
   return [...new Set(array)];
 }
 

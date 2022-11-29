@@ -13,12 +13,13 @@ async function getRecipes() {
 async function displayRecipes(recipes) {
   const recipesSection = document.querySelector(".recipes");
   recipesSection.innerHTML = "";
-  // modif
-  recipes.forEach((recipe) => {
-    const recipeModel = recipeFactory(recipe);
+
+  for (let index = 0; index < recipes.length; index++) {
+    const element = recipes[index];
+    const recipeModel = recipeFactory(element);
     const recipeCardDOM = recipeModel.getRecipeCardDOM();
     recipesSection.appendChild(recipeCardDOM);
-  });
+  }
 }
 
 async function init() {

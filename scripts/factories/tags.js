@@ -7,68 +7,63 @@ function appliancesFactory(recipes) {
   appliancesSection.innerHTML = "";
 
   const arrayFiltered = appliancesFilter(recipes);
-  // modif
-  arrayFiltered.forEach((item) => {
+
+  for (let index = 0; index < arrayFiltered.length; index++) {
+    const element = arrayFiltered[index];
     const li = document.createElement("li");
     li.classList.add("appliances-li");
-    li.innerHTML = `${item}`;
+    li.innerHTML = `${element}`;
     appliancesSection.appendChild(li);
-  });
+  }
 }
 
 function ustensilsFactory(recipes) {
   ustensilsSection.innerHTML = "";
 
   const arrayFiltered = ustensilsFilter(recipes);
-  // modif
-  arrayFiltered.forEach((item) => {
-    // console.log(item);
+  for (let index = 0; index < arrayFiltered.length; index++) {
+    const element = arrayFiltered[index];
     const li = document.createElement("li");
     li.classList.add("ustensils-li");
-    li.innerHTML = `${item}`;
+    li.innerHTML = `${element}`;
     ustensilsSection.appendChild(li);
-  });
+  }
 }
 
 function ingredientsFactory(recipes) {
   ingredientsSection.innerHTML = "";
 
   const arrayFiltered = ingredientsFilter(recipes);
-  // modif
-  arrayFiltered.forEach((item) => {
+  for (let index = 0; index < arrayFiltered.length; index++) {
+    const element = arrayFiltered[index];
     const li = document.createElement("li");
     li.classList.add("ingredients-li");
-    li.innerHTML = `${item}`;
+    li.innerHTML = `${element}`;
     ingredientsSection.appendChild(li);
-  });
+  }
 }
 
 function filterTag(recipes) {
   const textTag = document.querySelectorAll(
     ".appliances-li, .ustensils-li, .ingredients-li"
   );
-  // modif
-  textTag.forEach((text) => {
+
+  for (let index = 0; index < textTag.length; index++) {
+    let text = textTag[index];
     text.addEventListener("click", () => {
-      console.log(text);
-      text.classList.add("disabled");
       tagSelected.push(text);
       displayTags(tagSelected);
       searchTag(recipes);
-      // reflechir a close dropdown ou clear input
     });
-  });
+  }
 }
 
 function displayTags(tagSelected) {
   const tags = document.querySelector(".tags");
-
   tags.innerHTML = "";
-  console.log(tagSelected);
-  // modif
+
   tagSelected.forEach((element, index) => {
     const div = document.createElement("div");
-    console.log(element);
     div.innerHTML = `<span class="tag-span" data-id="${index}">${element.innerText}</span>
     <i class="fa-regular fa-circle-xmark delete-cross"></i>
       `;
