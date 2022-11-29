@@ -99,12 +99,18 @@ function searchSelectInput(recipes) {
           }
         }
 
-        if (findIngredients() || findUstensils() || findAppliances()) {
+        if (input.id === "ingredients-input") {
+          findIngredients();
+          allTags(array);
+          displayRecipes(array);
+        } else if (input.id === "appliances-input") {
+          findAppliances();
           allTags(array);
           displayRecipes(array);
         } else {
-          allTags(recipes);
-          displayRecipes(recipes);
+          findUstensils();
+          allTags(array);
+          displayRecipes(array);
         }
       }
     });

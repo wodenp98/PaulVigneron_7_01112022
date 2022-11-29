@@ -10,22 +10,24 @@ function selectTags(recipes) {
       text.classList.add("disabled");
       tagsClicked.push(text);
       displayTags();
-      // searchTags(recipes);
+      searchTags(recipes);
     });
   });
 }
 
 function displayTags() {
-  const tagsContainer = document.querySelector(".tags");
-  tagsContainer.innerHTML = "";
+  const tags = document.querySelector(".tags");
+  tags.innerHTML = "";
 
-  tagsClicked.forEach((element) => {
+  tagsClicked.forEach((element, index) => {
     const div = document.createElement("div");
-    div.innerHTML = `<span class="tag-span">${element.innerText}</span>
+    div.innerHTML = `<span class="tag-span data-id="${index}">${element.innerText}</span>
     <i class="fa-regular fa-circle-xmark delete-cross"></i>
       `;
+
     div.classList.add("tags-container");
-    tagsContainer.appendChild(div);
+    tags.appendChild(div);
+
     element.className == "appliances-li disabled"
       ? (div.style.backgroundColor = "#68d9a4")
       : element.className == "ustensils-li disabled"
@@ -36,25 +38,25 @@ function displayTags() {
   });
 }
 
-// function searchTags(recipes) {
-//   console.log(tagsClicked);
+function searchTags(recipes) {
+  console.log(tagsClicked);
 
-//   const result = recipes.filter((recipe) => {
-//     return tagsClicked.every((array) => {
-//       const tagLow = array.textContent.toLowerCase();
+  const result = recipes.filter((recipe) => {
+    return tagsClicked.every((array) => {
+      const tagLow = array.textContent.toLowerCase();
 
-//       return (
-//         recipe.ingredients.find((ingredients) => {
-//           return ingredients.ingredient.toLowerCase().includes(tagLow);
-//         }) ||
-//         recipe.appliance.toLowerCase().includes(tagLow) ||
-//         recipe.ustensils.find((ustensil) => {
-//           return ustensil.toLowerCase().includes(tagLow);
-//         })
-//       );
-//     });
-//   });
+      return (
+        recipe.ingredients.find((ingredients) => {
+          return ingredients.ingredient.toLowerCase().includes(tagLow);
+        }) ||
+        recipe.appliance.toLowerCase().includes(tagLow) ||
+        recipe.ustensils.find((ustensil) => {
+          return ustensil.toLowerCase().includes(tagLow);
+        })
+      );
+    });
+  });
 
-//   displayRecipes(result);
-//   allTags(result);
-// }
+  displayRecipes(result);
+  allTags(result);
+}
