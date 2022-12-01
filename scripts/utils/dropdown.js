@@ -17,6 +17,7 @@ function factoryListener() {
   const chevrons = document.querySelectorAll(".fa-chevron-down");
   chevrons.forEach((chevron) => {
     let type = chevron.parentElement.children[0];
+    let input = chevron.parentElement.children[0];
 
     chevron.addEventListener("click", () => {
       closeDropdown(type);
@@ -27,6 +28,7 @@ function factoryListener() {
         dropdownDisplay.style.display = "none";
         rotateArrow.classList.remove("arrow-rotation");
       } else {
+        input.value = "";
         dropdownDisplay.style.display = "block";
         rotateArrow.classList.add("arrow-rotation");
       }

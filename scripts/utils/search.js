@@ -1,3 +1,5 @@
+let tagInput = [];
+
 function searchRecipes(recipes) {
   const searchField = document.getElementById("search-input");
   const emptyRecipe = document.querySelector(".recipes");
@@ -69,24 +71,77 @@ function searchInput(recipes) {
   const inputDropdown = document.querySelectorAll(
     "#appliances-input, #ingredients-input, #ustensils-input"
   );
+  const ingredientsSection = document.getElementById("ingredients-list");
+  const ustensilsSection = document.getElementById("ustensils-list");
+  const appliancesSection = document.getElementById("appliances-list");
+
   inputDropdown.forEach((input) => {
     input.addEventListener("keyup", () => {
       const inputField = input.value.toLowerCase();
 
-      const newRecipes = recipes.filter((recipe) => {
-        return (
-          recipe.appliance.toLowerCase().includes(inputField) ||
-          recipe.ingredients.find((ingredient) =>
-            ingredient.ingredient.toLowerCase().includes(inputField)
-          ) ||
-          recipe.ustensils.find((ustensil) =>
-            ustensil.toLowerCase().includes(inputField)
-          )
-        );
-      });
+      if (input.id === "ingredients-input") {
+        const ingredientsArr = recipes.map((recipe) => recipe.ingredients);
+        let array = [];
+        ingredientsArr.forEach((element) => {
+          element.forEach((recipe) => {
+            let test = recipe.ingredient.toLowerCase();
+            array.push(test);
+            return (array = [...new Set(array)]);
+          });
+        });
 
-      displayRecipes(newRecipes);
-      globalTags(newRecipes);
+        tagInput = array.filter((element) =>
+          element.toLowerCase().includes(inputField)
+        );
+        ingredientsSection.innerHTML = "";
+        tagInput.forEach((item) => {
+          const li = document.createElement("li");
+          li.classList.add("ingredients-li");
+          li.innerHTML = `${item}`;
+          ingredientsSection.appendChild(li);
+        });
+        filterTag(recipes);
+      } else if (input.id === "ustensils-input") {
+        const ustensilsArr = recipes.map((recipe) => recipe.ustensils);
+        let array = [];
+        ustensilsArr.forEach((element) => {
+          element.forEach((ustensil) => {
+            let test = ustensil.toLowerCase();
+            array.push(test);
+            return (array = [...new Set(array)]);
+          });
+        });
+
+        tagInput = array.filter((element) =>
+          element.toLowerCase().includes(inputField)
+        );
+        ustensilsSection.innerHTML = "";
+        tagInput.forEach((item) => {
+          const li = document.createElement("li");
+          li.classList.add("ustensils-li");
+          li.innerHTML = `${item}`;
+          ustensilsSection.appendChild(li);
+        });
+        filterTag(recipes);
+      } else {
+        let array = [];
+        const appliancesArr = recipes.map((recipe) => {
+          let applianceLow = recipe.appliance.toLowerCase();
+          array.push(applianceLow);
+          return (array = [...new Set(array)]);
+        });
+        tagInput = array.filter((element) =>
+          element.toLowerCase().includes(inputField)
+        );
+        appliancesSection.innerHTML = "";
+        tagInput.forEach((item) => {
+          const li = document.createElement("li");
+          li.classList.add("appliances-li");
+          li.innerHTML = `${item}`;
+          appliancesSection.appendChild(li);
+        });
+        filterTag(recipes);
+      }
     });
   });
 }
